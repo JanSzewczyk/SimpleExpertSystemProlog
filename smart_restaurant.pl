@@ -13,10 +13,10 @@ start:-write('-------------------------------\n'),
 menu:-nl, write('-------------------------------\n'),
       write('Menu: [pamietaj o kropce]'),nl,
       write('1. Menu zup.'),nl,
-      write('2. Menu drugich daÒ.'),nl,
+      write('2. Menu drugich da≈Ñ.'),nl,
       write('3. Znajdz wymarzona zupe.'),nl,
       write('4. Znajdz wymarzone drugie danie.'),nl,
-      write('5. Sprawdz swoje zamÛwienie.'),nl,
+      write('5. Sprawdz swoje zam√≥wienie.'),nl,
       write('6. Drukuj rachunek.'),nl,
       write('7. Koniec.'),nl,
       write('-------------------------------\n'), nl,
@@ -25,20 +25,20 @@ menu:-nl, write('-------------------------------\n'),
 
 czytaj:-read(R), ((R==1,wyswietl_menu_zup); (R==2,wyswietl_menu_glownych); (R==3,znajdz_zupe); (R==4,znajdz_drugie); (R==5,sprawdz_zamowienie); (R==6,zapisz_plik); (R==7,koniec)).
 
-%wyúwietlanie wszystkich zup
+%wy≈õwietlanie wszystkich zup
 wyswietl_menu_zup :- nl, write('NASZE ZUPY <3 :\n'),
     (
        nazwa_z(X,Y),write('==>Nazwa: zupa '),write(X),write('t\t\t Cena:  '),write(Y), nl,
-       zupa(X,Skladnik), write('\tSk≥adnik: '), write(Skladnik);
+       zupa(X,Skladnik), write('\tSk≈Çadnik: '), write(Skladnik);
        menu
     ),
     nl,fail.
 
-%wyúwietlanie wszystkich glÛwnych daÒ
+%wy≈õwietlanie wszystkich gl√≥wnych da≈Ñ
 wyswietl_menu_glownych :- nl, write('NASZE DRUGIE DANIA <3 :\n'),
     (
        nazwa_d(X,Y),write('==>Nazwa: '),write(X),write('t\t\t  Cena:  '),write(Y), nl,
-       drugie(X,Skladnik), write('\t Sk≥adnik: '), write(Skladnik);
+       drugie(X,Skladnik), write('\t Sk≈Çadnik: '), write(Skladnik);
        menu
     ),
     nl,fail.
@@ -57,7 +57,7 @@ znajdz_zupe :- nl, write('ZNAJDZ WYMARZONA ZUPE\n'),
      ),
      (
          (
-             not((zupa(X,Y),zupa(X,Z))),write('Niestety mnie odnalaz≥em Twojej wymarzonej zupy :( .'),nl,menu
+             not((zupa(X,Y),zupa(X,Z))),write('Niestety mnie odnalaz≈Çem Twojej wymarzonej zupy :( .'),nl,menu
          );
         true
      ),
@@ -65,22 +65,22 @@ znajdz_zupe :- nl, write('ZNAJDZ WYMARZONA ZUPE\n'),
      write('TWOJA wymarzona zupa to: zupa '),write(X),write('       cena: '),write(D),
      (
           nl, nl, write('Wybierz : '),nl,
-          write('1. Dodaj zamÛwienie.'), nl,
-          write('2. OdrzuÊ zamÛwienie i wrÛÊ do menu.'), nl,
+          write('1. Dodaj zam√≥wienie.'), nl,
+          write('2. Odrzuƒá zam√≥wienie i wr√≥ƒá do menu.'), nl,
           read(Wyb),
           (
-               (Wyb==1,  (write('Wpisz iloúÊ posi≥kÛw (iloúÊ > 0) :'), read(Count),
-                         %(Count=<0 ,write('IloúÊ nie moøe byÊ mniejsza od 0.'),menu);                                %coú sie pie###li
+               (Wyb==1,  (write('Wpisz ilo≈õƒá posi≈Çk√≥w (ilo≈õƒá > 0) :'), read(Count),
+                         %(Count=<0 ,write('Ilo≈õƒá nie mo≈ºe byƒá mniejsza od 0.'),menu);                               
                          asserta(zamowienia_z(data(X,D),Count)),
                          asserta(data(X,D)),
-                         write('Dodano do zamÛwienia.')),nl, menu );
-               (Wyb==2,  (   write(' :( Moøe nastÍpnym razem.')), menu )
+                         write('Dodano do zam√≥wienia.')),nl, menu );
+               (Wyb==2,  (   write(' :( Mo≈ºe nastƒôpnym razem.')), menu )
 
           )
      ).
 
-%wyszukiwanie dania g≥Ûwnego
-znajdz_drugie :- nl, write('ZNAJDZ WYMARZONE DANIE G£”WNE :\n'),
+%wyszukiwanie dania g≈Ç√≥wnego
+znajdz_drugie :- nl, write('ZNAJDZ WYMARZONE DANIE G≈Å√ìWNE :\n'),
     write('Podaj nazwy skladnikow : '), nl,
     write('1. '), read(Y),
     write('2. '), read(Z),
@@ -93,7 +93,7 @@ znajdz_drugie :- nl, write('ZNAJDZ WYMARZONE DANIE G£”WNE :\n'),
      ),
      (
          (
-             not((drugie(X,Y),drugie(X,Z))),write('Niestety mnie odnalaz≥em Twojego wymarzonego dania g≥Ûwnego :( .'),nl,menu
+             not((drugie(X,Y),drugie(X,Z))),write('Niestety mnie odnalaz≈Çem Twojego wymarzonego dania g≈Ç√≥wnego :( .'),nl,menu
          );
         true
      ),
@@ -101,48 +101,48 @@ znajdz_drugie :- nl, write('ZNAJDZ WYMARZONE DANIE G£”WNE :\n'),
      write('TWOJE wymarzone danie to: '),write(X),write('       cena: '),write(D),
      (
           nl, nl, write('Wybierz : '),nl,
-          write('1. Dodaj zamÛwienie.'), nl,
-          write('2. OdrzuÊ zamÛwienie i wrÛÊ do menu.'), nl,
+          write('1. Dodaj zam√≥wienie.'), nl,
+          write('2. Odrzuƒá zam√≥wienie i wr√≥ƒá do menu.'), nl,
           read(Wyb),
           (
-               (Wyb==1,  (write('Wpisz iloúÊ posi≥kÛw (iloúÊ > 0) :'), read(Count),
-                         %(Count=<0 ,write('IloúÊ nie moøe byÊ mniejsza od 0.'),menu);                                %coú sie pie###li
+               (Wyb==1,  (write('Wpisz ilo≈õƒá posi≈Çk√≥w (ilo≈õƒá > 0) :'), read(Count),
+                         %(Count=<0 ,write('Ilo≈õƒá nie mo≈ºe byƒá mniejsza od 0.'),menu);                               
                          asserta(zamowienia_d(data(X,D),Count)),
                          asserta(data(X,D)),
-                         write('Dodano do zamÛwienia.')),nl, menu );
-+               (Wyb==2,  (   write(' :( Moøe nastÍpnym razem.')), menu )
+                         write('Dodano do zam√≥wienia.')),nl, menu );
++               (Wyb==2,  (   write(' :( Mo≈ºe nastƒôpnym razem.')), menu )
 
           )
      ).
 
-%Wyúwietlanie zamÛwieÒ
-sprawdz_zamowienie :- nl,write('TWOJE zamÛwienie :\n'),
+%Wy≈õwietlanie zam√≥wie≈Ñ
+sprawdz_zamowienie :- nl,write('TWOJE zam√≥wienie :\n'),
     (
          write('=>Zupy :'),nl,
          zamowienia_z(data(X,Y),Z),
          write('\tNazwa: zupa '),write(X), write('\tCena: '), write(Y), write('\tSztuk: '), write(Z) ,write('\tSuma: '),Suma is Y*Z, write(Suma);
-         write('=>Danie g≥Ûwne :'),nl,
+         write('=>Danie g≈Ç√≥wne :'),nl,
          zamowienia_d(data(X1,Y1),Z1),
          write('\tNazwa: '),write(X1), write('\tCena: '), write(Y1), write('\tSztuk: '), write(Z1) ,write('\tSuma: '),Suma is Y1*Z1, write(Suma);
          menu
      ),
      nl,fail.
 
-%Zapisanie zamÛwienia do pliku
-zapisz_plik :- write('\nDziÍkuje za z≥oøone zamÛwienie.'), nl, write('TwÛj rachunek jest zapisany.'), nl, write('Mi≥ego dnia ;)'), nl,
+%Zapisanie zam√≥wienia do pliku
+zapisz_plik :- write('\nDziƒôkuje za z≈Ço≈ºone zam√≥wienie.'), nl, write('Tw√≥j rachunek jest zapisany.'), nl, write('Mi≈Çego dnia ;)'), nl,
      tell('rachunek.txt'),
      (
          write('=>Zupy :'),nl,
          zamowienia_z(data(X,Y),Z),
          write('\tNazwa: zupa '),write(X), write('\tCena: '), write(Y), write('\tSztuk: '), write(Z) ,write('\tSuma: '),Suma is Y*Z, write(Suma);
          nl,
-         write('=>Danie g≥Ûwne :'),nl,
+         write('=>Danie g≈Ç√≥wne :'),nl,
          zamowienia_d(data(X1,Y1),Z1),
          write('\tNazwa: '),write(X1), write('\tCena: '), write(Y1), write('\tSztuk: '), write(Z1) ,write('\tSuma: '),Suma is Y1*Z1, write(Suma)
       );
-     nl, write('\tDziÍkujÍ za z≥oøenie zamÛwienia w mojej restauracji !\n\tMi≥ego dnia :)'),
+     nl, write('\tDziƒôkujƒô za z≈Ço≈ºenie zam√≥wienia w mojej restauracji !\n\tMi≈Çego dnia :)'),
      told,
-     nl, write('TwÛj rachunek zosta≥ wydrukowany'), menu.
+     nl, write('Tw√≥j rachunek zosta≈Ç wydrukowany'), menu.
 
 koniec:-halt.
 
